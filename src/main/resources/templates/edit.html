@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{setting.page.title.edit}">Page Title</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" media="screen"/>
+
+    <link th:href="@{/css/vroom.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" media="screen"/>
+
+    <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
+    <link rel="ICON" href="favicon.ico" type="image/ico" />
+
+
+</head>
+<body>
+
+<div th:replace="template :: header"></div>
+<div th:replace="template :: navigation"></div>
+
+<div class="container">
+
+    <h1  class="page-title" >Edit</h1>
+    <hr>
+    <br>
+
+    <div class="mb-5">
+        <!-- About Modal -->
+        <div class="modal fade" id="new-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:#007bff;" ><b><span id="new-edit-title"></span></b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="error-message" class="alert alert-danger" >
+                            <ul style="list-style-type:none;">
+                                <li><span id="message-one"></span></li>
+                                <li><span id="message-two"></span></li>
+                                <li><span id="message-three"></span></li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="word">Entry:</label>
+                            <input  type="text" class="form-control" id="word">
+                        </div>
+                        <div class="form-group">
+                            <label for="pos">Part of Speech:</label>
+                            <input  type="text" class="form-control" id="pos">
+                        </div>
+                        <div class="form-group">
+                            <label for="desc">Description:</label>
+                            <textarea  class="form-control" rows="5" id="desc"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="word-usage">Word Usage:</label>
+                            <textarea class="form-control" rows="5" id="word-usage"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="word-usage">Right Answers:</label>
+                            <textarea class="form-control" rows="5" id="right-count"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="word-usage">Total Tries:</label>
+                            <textarea class="form-control" rows="5" id="total-try-count"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save" type="button" class="btn btn-primary" >Save</button>
+                        <button id="close" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button id="new-entry" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-edit" >New</button>
+            <button id="edit-entry" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-edit" >Edit</button>
+
+            <button id="delete-entry" type="button" class="btn btn-primary">Delete</button>
+            <button id="cancel-entry" type="button" class="btn btn-primary">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="table-responsive">
+        <table id="dictionary-entries" class="table table-striped table-bordered text-left">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Word</th>
+                <th>Part Of Speech</th>
+                <th>Description</th>
+                <th>Word Usage</th>
+                <th>Right Answers</th>
+                <th>Total Tries</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="dic : ${Dictionary}">
+                <td th:text="${dic.id}">Id</td>
+                <td th:text="${dic.word}">Word</td>
+                <td th:text="${dic.partOfSpeech}">Part Of Speech</td>
+                <td th:text="${dic.definition}">Description</td>
+                <td th:text="${dic.wordUsage}">Word Usage</td>
+                <td th:text="${dic.rightCount}">Right Count</td>
+                <td th:text="${dic.totalTryCount}">Total Try Count</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div th:replace="template :: footer"></div>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}" ></script>
+<script type="text/javascript" th:src="@{/js/popper.js}" ></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+
+<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}" ></script>
+<script type="text/javascript" th:src="@{/js/edit.js}" ></script>
+
+
+
+</body>
+
+</html>

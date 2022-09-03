@@ -1,0 +1,50 @@
+#goosander-main-border {
+    height: 600px;
+    border: 3px #900C3F solid;
+    border-radius: 25px;
+}
+
+.goosander-text-color {
+    color: #D52905;
+}
+
+#goosander-instructions {
+    text-decoration: underline;
+}
+
+.goosander-textbox-border {
+    border-color: #cc0099;
+    border-radius: 5px;
+    border-width: 8px;
+}
+
+.goosander-instructions-secondary{
+    color:#cc0099;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.goosander-instructions-primary{
+    color:blue;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.goosander-instructions-info{
+    color:#17a2b8;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#correct{
+    margin-top:20px;
+}
+
+#incorrect{
+    margin-top:20px;
+}
+
+#hintBtn{
+    margin-left: 20px;
+}
+

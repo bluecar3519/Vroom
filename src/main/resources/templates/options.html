@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{setting.page.title.edit}">Page Title</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" media="screen"/>
+
+    <link th:href="@{/css/vroom.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/options.css}" rel="stylesheet" media="screen"/>
+
+    <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
+    <link rel="ICON" href="favicon.ico" type="image/ico" />
+
+
+</head>
+<body>
+
+<div th:replace="template :: header"></div>
+<div th:replace="template :: navigation"></div>
+
+<form action="#" th:action="@{/options}" th:object="${settings}" method="post">
+
+    <div class="container">
+        <h1 class="page-title" >Options</h1>
+        <hr>
+        <br>
+        
+        <div  class="my-3 vroom-message" th:if=" ${settings.successMessage != '' }">
+            <div class="alert alert-success">
+  			    <strong>Success!</strong> <p th:text="${settings.successMessage}">success message</p>
+		    </div>
+       </div>
+    
+       <div  class="my-3 vroom-message" th:if=" ${settings.dangerMessage != '' }">
+    	  <div class="alert alert-danger">
+  			 <strong>Danger!</strong> <p th:text="${settings.dangerMessage}">success message</p>
+		  </div>
+       </div>
+    
+
+        <h4>Folders</h4>
+        <div class="Box">
+            <li class="Box-row py-0">
+
+                <div class="form-group">
+                    <br>
+                    <label for="directory"><b>Main Directory</b></label>
+                    <input type="text" id="directory"  class="form-control" th:field="*{directory}"></input>
+                </div>
+                <p>This is the Main Directory where the upload, download, and systems folders are contained.</p>
+
+            </li>
+            <li class="Box-row py-0">
+
+
+                <div class="form-group">
+                    <br>
+                    <label for="output-directory"><b>Upload Folder</b></label>
+                    <div class="input-group">
+                        <span  class="input-group-addon main-dir" ></span>
+                        <input type="text" id="output-directory" class="form-control" th:field="*{folderIn}"></input>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit"  name="uploadDatabase" class="btn btn-primary" >Upload Database</button>
+                    </div>
+                    <br>
+                    <label for="out-folder"><b>Download Folder</b></label>
+                    <div class="input-group">
+                        <span id="out-folder"  class="input-group-addon main-dir" ></span>
+                        <input type="text" id="input-directory" class="form-control" th:field="*{folderOut}"></input>
+                    </div>
+                    <label for="out-filter"><b>Download Filter</b></label>
+                    <div class="input-group">
+                        <input type="text" id="input-filter" class="form-control" th:field="*{filterOut}"></input>
+                        <span id="out-filter"  class="input-group-addon" >%</span>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit"  name="downloadDatabase"  class="btn btn-primary" >Download Database</button>
+                    </div>
+                </div>
+                <p>This folders are for uploading and downloading data from the database.</p>
+
+            </li>
+        </div>
+        <br>
+        <br>
+        <h4>Danger Zone</h4>
+        <div class="Box">
+
+            <li class="Box-row py-0">
+                <br>
+                <p><b>Clear Database</b></p>
+                <br>
+                <p>This buttons deletes <b>all</b> the records from the database.</p>
+                <br>
+                <div>
+                    <button type="submit" name="deleteDatabase"  class="btn btn-danger">Delete Database</button>
+                </div>
+                <br>
+            </li>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div th:replace="template :: footer"></div>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}" ></script>
+<script type="text/javascript" th:src="@{/js/popper.js}" ></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+
+<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}" ></script>
+<script type="text/javascript" th:src="@{/js/options.js}" ></script>
+
+
+
+</body>
+
+</html>

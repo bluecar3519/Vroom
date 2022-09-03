@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{setting.page.title}">Page Title</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+
+    <link th:href="@{/css/vroom.css}" rel="stylesheet" media="screen"/>
+
+    <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
+    <link rel="ICON" href="favicon.ico" type="image/ico" />
+
+    <link th:href="@{/css/index.css}" rel="stylesheet" media="screen"/>
+
+
+</head>
+<body>
+
+<div th:replace="template :: header"></div>
+<div th:replace="template :: navigation"></div>
+
+<div class="container">
+    <h1 class="page-title" >Take the Spelling Test</h1>
+
+    <hr>
+    <br>
+    <div class="Box">
+        <li class="Box-row py-0">
+
+            <div class="form-group">
+                <div class="goosander-test">
+                    <small id="diplayRightTotal"  class="text-muted"></small>
+                </div>
+                <div class="goosander-test">
+                    <small id="diplayWrongTotal"  class="text-muted"></small>
+                </div>
+                <br>
+                <br>
+                <div class="progress goosander-test" style="width:346px">
+                    <div id="goosander-progress" class="progress-bar bg-success" style="width:0%"></div>
+                </div>
+                <div class="goosander-test">
+                    <small id="diplayWordTotal"  class="text-muted"></small>
+                </div>
+
+                <br>
+                <label for="answer"><b>Enter Answer:</b></label>
+                <input type="text" id="answer"  class="form-control" style="height: 150px !important; font-size: 5rem !important;"></input>
+            </div>
+            <div style="display: inline-block">
+                <div class="btn-group">
+                    <button id="previousBtn" class="btn btn-primary" type="button">Previous</button>
+                    <button id="sayBtn" class="btn btn-primary " type="button">Say</button>
+                    <button id="checkBtn" class="btn btn-primary" type="button">Check</button>
+                    <button id="showBtn" class="btn btn-primary" type="button">Show</button>
+                    <button id="nextBtn" class="btn btn-primary" type="button">Next</button>
+                </div>
+
+                <button style="margin-left: 50px;" id="donetBtn" class="btn btn-primary" type="button">Done</button>
+            </div>
+            <br>
+            <br>
+        </li>
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div id="done" class="alert alert-success check-answer">
+        <span></span>
+    </div>
+
+    <div id="correct" class="alert alert-success check-answer">
+        <strong>Correct</strong>
+    </div>
+
+    <div id="incorrect" class="alert alert-danger check-answer">
+        <strong>Incorrect</strong>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+    <div id="show-block">
+         <p class="show-header" >Word:</p>
+         <span id="show-word" style="font-size: 60px; color: gray;"></span> &nbsp &nbsp &nbsp &nbsp <span id="show-part-speech" style="font-size: 30px; color: black;"></span>
+         <p class="show-header" >Definition:</p>
+         <span id="show-definition" style="font-size: 30px; color: black;"></span>
+         <p class="show-header" style="margin-top: 30px;">Word Usage:</p>
+         <span id="show-word-usage" style="font-size: 30px; color: black;"></span>
+        <p class="show-header" style="margin-top: 30px;">Right/Total:</p>
+        <span id="show-right-total-count" style="font-size: 30px; color: black;"></span>
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<div style="display:none;">
+    <table id="dictionary-entries">
+        <tbody>
+
+        <tr th:each="dic : ${Dictionary}">
+            <td th:text="${dic.id}">Id</td>
+            <td th:text="${dic.word}">Word</td>
+            <td th:text="${dic.partOfSpeech}">Part Of Speech</td>
+            <td th:text="${dic.definition}">Description</td>
+            <td th:text="${dic.wordUsage}">Word Usage</td>
+            <td th:text="${dic.totalTryCount}">Total Try Count</td>
+            <td th:text="${dic.rightCount}">Right Count</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div th:replace="template :: footer"></div>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}" ></script>
+<script type="text/javascript" th:src="@{/js/popper.js}" ></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+
+<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}" ></script>
+<script type="text/javascript" th:src="@{/js/index.js}" ></script>
+
+
+
+</body>
+
+</html>

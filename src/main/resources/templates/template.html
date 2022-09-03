@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="header">
+    <div id="logo-header">
+        <img id="logo-image"
+             role="presentation"
+             src="/static/images/HuracanGT.png"
+             th:src="@{images/HuracanGT.png}"
+        />
+
+        <img id="logo-name"
+             role="presentation"
+             src="/static/images/HuracanGT.png"
+             th:src="@{images/Vroom.png}"
+        />
+
+    </div>
+</div>
+
+<div th:fragment="navigation">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="/">VROOM</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/edit">Edit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/options">Options</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/johncuseysan/Vroom/wiki">Help</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#about">About</button>
+
+
+                    <!-- About Modal -->
+                    <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel" style="color:#007bff;" ><b>About Vroom Dictionary</b></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Written by: John Joseph Cusey</p>
+                                    <p>Date: May 03, 2018</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<div th:fragment="footer" >
+    <div id="footer" >
+        <div  class="fixed-bottom footer-area">
+            <h3 id="footer-text">&copy; Copyright 2017 Cusey, LLC</h3>
+            <div class="footer-strip" ></div>
+        </div>
+    </div>
+</div>
+
+
+</html>
